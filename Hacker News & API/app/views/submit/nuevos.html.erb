@@ -1,0 +1,155 @@
+<% content_for :page_title, "index" %>
+<style>
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+td {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    color: #828282;
+}
+center {
+    text-align: -webkit-center;
+}
+table {
+    border-collapse: separate;
+    white-space: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-size: medium;
+    font-style: normal;
+    color: -internal-quirk-inherit;
+    text-align: start;
+    border-spacing: 2px;
+    font-variant: normal;
+}
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    color: #828282;
+}
+.title {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    color: #828282;
+}
+.votearrow {
+    width: 10px;
+    height: 10px;
+    border: 0px;
+    margin: 3px 2px 6px;
+    background: url(grayarrow.gif) no-repeat;
+}
+a:visited {
+    color: #828282;
+    text-decoration: none;
+}
+.hnmore a:link, a:visited {
+    color: #828282;
+}
+a:link {
+    color: #000000;
+    text-decoration: none;
+}
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.subtext {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 7pt;
+    color: #828282;
+}
+.subtext a:link, .subtext a:visited {
+    color: #828282;
+}
+
+
+</style>
+  <%y=1%>
+  <% @submit.reverse_each do |submit| %>
+    
+    <table border="0" align = "center" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+      <tbody>    
+          <tr class="athing" id="22703000">
+              <td align="right" valign="top" class="title">
+                  <span class="rank"><%=y%>.
+                  <%y=y+1%></span>
+              </td>      
+              <td valign="top" class="votelinks">
+                  <center>
+                      <a id="up_22703000" href="vote?id=22703000&amp;how=up&amp;goto=news">
+                          <div class="votearrow" title="upvote" bis_skin_checked="1">
+  
+                          </div>
+                      </a>
+                  </center>
+              </td>
+              <td class="title">
+                  <% if submit.url != ""  %>
+                                        <a href="/submits/<%=submit.id%>" style = "text-decoration: none;color:black" class="storylink">
+                              <%= submit.title %>
+                  </a>
+                      <span class="sitebit comhead"> (
+                          <a href="https://<%=submit.url%>" style = "text-decoration: none;color:black">
+                          <span class="sitestr"><%= submit.url %></span>
+                              </a>
+                          )
+                      </span>
+                  <% else %>
+                  <a href="/submits/<%=submit.id%>" style = "text-decoration: none;color:black" class="storylink">
+                              <%= submit.title %>
+                  </a>
+                  <% end %>
+                  
+              </td>
+          </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td class="subtext">
+                <span class="score" id="score_22704657">
+                    <%= submit.votes %>
+                    <%= link_to 'Vote', vote_submit_path(submit), method: :put %>
+                    <%= link_to 'Unvote', unvote_submit_path(submit), method: :put %>
+                </span> 
+                by 
+                <a href="users/<%= submit.user_id%>" class="hnuser">
+                    <%= submit.userpost %>
+                </a>
+                <span class="age">
+                    <a href="users/<%= submit.user_id%>" class="hnuser">
+                        <%= submit.created_at %>
+                    </a>
+                </span>
+                <span id="unv_22704657"></span> 
+                |
+                <a href="">
+                    hide
+                </a> 
+                | 
+                <a href="">
+                    past
+                </a>
+                |
+                <a href="">
+                    web
+                </a>
+            </td>
+        </tr>
+      </tbody>
+  </table>
+  <% end %>
+  
+</table>
+
+
+
+
+

@@ -1,0 +1,557 @@
+[
+    {
+        "id": 1227596422821896193,
+        "id_str": "1227596422821896193",
+        "name": "Alistair Mavin",
+        "screen_name": "mavin_alistair",
+        "location": "UK",
+        "description": "I am an internationally renowned independent requirements specialist based in the UK. I provide requirements engineering training, coaching & consulting.",
+        "url": "https://t.co/yAPDIlCziu",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "https://t.co/yAPDIlCziu",
+                        "expanded_url": "http://www.alistairmavin.com/",
+                        "display_url": "alistairmavin.com",
+                        "indices": [
+                            0,
+                            23
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": false,
+        "followers_count": 16,
+        "friends_count": 141,
+        "listed_count": 0,
+        "created_at": "Wed Feb 12 14:13:07 +0000 2020",
+        "favourites_count": 3,
+        "utc_offset": null,
+        "time_zone": null,
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 12,
+        "lang": null,
+        "status": {
+            "created_at": "Thu Mar 05 19:26:19 +0000 2020",
+            "id": 1235647852119916549,
+            "id_str": "1235647852119916549",
+            "text": "The end of an engaging week in #Barcelona where it has been a privilege to speak @fib_upc \nI’ve spent the week host… https://t.co/5FPaLX59Nh",
+            "truncated": true,
+            "entities": {
+                "hashtags": [
+                    {
+                        "text": "Barcelona",
+                        "indices": [
+                            31,
+                            41
+                        ]
+                    }
+                ],
+                "symbols": [],
+                "user_mentions": [
+                    {
+                        "screen_name": "fib_upc",
+                        "name": "FIB - UPC",
+                        "id": 115148091,
+                        "id_str": "115148091",
+                        "indices": [
+                            81,
+                            89
+                        ]
+                    }
+                ],
+                "urls": [
+                    {
+                        "url": "https://t.co/5FPaLX59Nh",
+                        "expanded_url": "https://twitter.com/i/web/status/1235647852119916549",
+                        "display_url": "twitter.com/i/web/status/1…",
+                        "indices": [
+                            117,
+                            140
+                        ]
+                    }
+                ]
+            },
+            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 2,
+            "favorite_count": 11,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "en"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "F5F8FA",
+        "profile_background_image_url": null,
+        "profile_background_image_url_https": null,
+        "profile_background_tile": false,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/1227596618947579913/NJ6iUSqw_normal.jpg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/1227596618947579913/NJ6iUSqw_normal.jpg",
+        "profile_link_color": "1DA1F2",
+        "profile_sidebar_border_color": "C0DEED",
+        "profile_sidebar_fill_color": "DDEEF6",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": true,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    },
+    {
+        "id": 1194745704,
+        "id_str": "1194745704",
+        "name": "Anna Gener",
+        "screen_name": "agenersurrell",
+        "location": "Barcelona ",
+        "description": "CEO Savills Aguirre Newman Barcelona & Patrona Fundació Museu Picasso",
+        "url": "https://t.co/7Ikl74MHsp",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "https://t.co/7Ikl74MHsp",
+                        "expanded_url": "https://www.savills-aguirrenewman.es",
+                        "display_url": "savills-aguirrenewman.es",
+                        "indices": [
+                            0,
+                            23
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": false,
+        "followers_count": 22682,
+        "friends_count": 13313,
+        "listed_count": 355,
+        "created_at": "Mon Feb 18 20:12:49 +0000 2013",
+        "favourites_count": 103528,
+        "utc_offset": null,
+        "time_zone": null,
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 19721,
+        "lang": null,
+        "status": {
+            "created_at": "Fri Mar 06 09:12:36 +0000 2020",
+            "id": 1235855790667264001,
+            "id_str": "1235855790667264001",
+            "text": "@Carla_cll Moltes gràcies, Carla ❤",
+            "truncated": false,
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [
+                    {
+                        "screen_name": "Carla_cll",
+                        "name": "Carla",
+                        "id": 1106856140514750464,
+                        "id_str": "1106856140514750464",
+                        "indices": [
+                            0,
+                            10
+                        ]
+                    }
+                ],
+                "urls": []
+            },
+            "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+            "in_reply_to_status_id": 1235853199438835712,
+            "in_reply_to_status_id_str": "1235853199438835712",
+            "in_reply_to_user_id": 1106856140514750464,
+            "in_reply_to_user_id_str": "1106856140514750464",
+            "in_reply_to_screen_name": "Carla_cll",
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 0,
+            "favorite_count": 0,
+            "favorited": false,
+            "retweeted": false,
+            "lang": "ca"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "C0DEED",
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_tile": false,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/1088367808579289088/fzD1ylBx_normal.jpg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/1088367808579289088/fzD1ylBx_normal.jpg",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/1194745704/1532270803",
+        "profile_link_color": "1DA1F2",
+        "profile_sidebar_border_color": "C0DEED",
+        "profile_sidebar_fill_color": "DDEEF6",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": true,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    },
+    {
+        "id": 856952755046449152,
+        "id_str": "856952755046449152",
+        "name": "Rudy Agovic",
+        "screen_name": "rudyagovic",
+        "location": "Minneapolis, MN",
+        "description": "CEO/Chief Data Scientists at Reliancy. PhD in Machine Learning. Tweeting on #MachineLearning #ArtificialIntelligence #DeepLearning #ComputerVision #DataScience",
+        "url": "https://t.co/vBu8RkdbvR",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "https://t.co/vBu8RkdbvR",
+                        "expanded_url": "https://www.linkedin.com/in/rudy-agovic-phd-a35b9b9/",
+                        "display_url": "linkedin.com/in/rudy-agovic…",
+                        "indices": [
+                            0,
+                            23
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": false,
+        "followers_count": 35868,
+        "friends_count": 29425,
+        "listed_count": 564,
+        "created_at": "Tue Apr 25 19:27:13 +0000 2017",
+        "favourites_count": 3703,
+        "utc_offset": null,
+        "time_zone": null,
+        "geo_enabled": true,
+        "verified": false,
+        "statuses_count": 7313,
+        "lang": null,
+        "status": {
+            "created_at": "Fri Feb 14 06:55:02 +0000 2020",
+            "id": 1228211025079439365,
+            "id_str": "1228211025079439365",
+            "text": "Google releases TyDi QA, a data set that aims to capture the uniqueness of languages\n #ArtificialIntelligence #AI… https://t.co/AOJ4w6leGV",
+            "truncated": true,
+            "entities": {
+                "hashtags": [
+                    {
+                        "text": "ArtificialIntelligence",
+                        "indices": [
+                            86,
+                            109
+                        ]
+                    },
+                    {
+                        "text": "AI",
+                        "indices": [
+                            110,
+                            113
+                        ]
+                    }
+                ],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": [
+                    {
+                        "url": "https://t.co/AOJ4w6leGV",
+                        "expanded_url": "https://twitter.com/i/web/status/1228211025079439365",
+                        "display_url": "twitter.com/i/web/status/1…",
+                        "indices": [
+                            115,
+                            138
+                        ]
+                    }
+                ]
+            },
+            "source": "<a href=\"https://buffer.com\" rel=\"nofollow\">Buffer</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 12,
+            "favorite_count": 16,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "en"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "F5F8FA",
+        "profile_background_image_url": null,
+        "profile_background_image_url_https": null,
+        "profile_background_tile": false,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/1150168291811500033/oPfA9VPq_normal.jpg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/1150168291811500033/oPfA9VPq_normal.jpg",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/856952755046449152/1513162168",
+        "profile_link_color": "1DA1F2",
+        "profile_sidebar_border_color": "C0DEED",
+        "profile_sidebar_fill_color": "DDEEF6",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": true,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    },
+    {
+        "id": 82364810,
+        "id_str": "82364810",
+        "name": "MIT CSAIL",
+        "screen_name": "MIT_CSAIL",
+        "location": "Cambridge, MA",
+        "description": "MIT's largest research lab, the Computer Science & Artificial Intelligence Lab https://t.co/CrZEGp7nEd #aaai #ml #bigdata #iot #datascience #cs #aaai20",
+        "url": "https://t.co/2YIudij4og",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "https://t.co/2YIudij4og",
+                        "expanded_url": "http://csail.mit.edu",
+                        "display_url": "csail.mit.edu",
+                        "indices": [
+                            0,
+                            23
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": [
+                    {
+                        "url": "https://t.co/CrZEGp7nEd",
+                        "expanded_url": "http://instagram.com/mit_csail/",
+                        "display_url": "instagram.com/mit_csail/",
+                        "indices": [
+                            79,
+                            102
+                        ]
+                    }
+                ]
+            }
+        },
+        "protected": false,
+        "followers_count": 121544,
+        "friends_count": 18919,
+        "listed_count": 2375,
+        "created_at": "Wed Oct 14 13:55:58 +0000 2009",
+        "favourites_count": 2661,
+        "utc_offset": null,
+        "time_zone": null,
+        "geo_enabled": false,
+        "verified": true,
+        "statuses_count": 3843,
+        "lang": null,
+        "status": {
+            "created_at": "Thu Mar 05 17:07:15 +0000 2020",
+            "id": 1235612852318359553,
+            "id_str": "1235612852318359553",
+            "text": "\"The strength of JavaScript is that you can do anything. The weakness is that you will.\" \n- Reg Braithwaite\n\n#ThursdayThoughts",
+            "truncated": false,
+            "entities": {
+                "hashtags": [
+                    {
+                        "text": "ThursdayThoughts",
+                        "indices": [
+                            109,
+                            126
+                        ]
+                    }
+                ],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": []
+            },
+            "source": "<a href=\"https://about.twitter.com/products/tweetdeck\" rel=\"nofollow\">TweetDeck</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 67,
+            "favorite_count": 208,
+            "favorited": false,
+            "retweeted": false,
+            "lang": "en"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "022330",
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme15/bg.png",
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme15/bg.png",
+        "profile_background_tile": true,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/885505956272115712/U81HpDxb_normal.jpg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/885505956272115712/U81HpDxb_normal.jpg",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/82364810/1499357815",
+        "profile_link_color": "0084B4",
+        "profile_sidebar_border_color": "A8C7F7",
+        "profile_sidebar_fill_color": "C0DFEC",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    },
+    {
+        "id": 9074632,
+        "id_str": "9074632",
+        "name": "Jordi Rosell",
+        "screen_name": "jrosell",
+        "location": "Aiguafreda, Vallès-Osona, BCN",
+        "description": "Ecommerce specialist helping optimize businesses at https://t.co/IZDfNvABP9 #CRO #UX #Analytics #CRM #ETL #BI #ML Ich lerne Deutsch. Família catalano-vietnamita",
+        "url": "https://t.co/a7lti6YvTA",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "https://t.co/a7lti6YvTA",
+                        "expanded_url": "http://elnostreraco.com/blog/?utm_source=twitter.com&utm_medium=referral&utm_cam",
+                        "display_url": "elnostreraco.com/blog/?utm_sour…",
+                        "indices": [
+                            0,
+                            23
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": [
+                    {
+                        "url": "https://t.co/IZDfNvABP9",
+                        "expanded_url": "http://thediar.com",
+                        "display_url": "thediar.com",
+                        "indices": [
+                            52,
+                            75
+                        ]
+                    }
+                ]
+            }
+        },
+        "protected": false,
+        "followers_count": 7810,
+        "friends_count": 2816,
+        "listed_count": 705,
+        "created_at": "Mon Sep 24 18:20:17 +0000 2007",
+        "favourites_count": 22348,
+        "utc_offset": null,
+        "time_zone": null,
+        "geo_enabled": true,
+        "verified": false,
+        "statuses_count": 69864,
+        "lang": null,
+        "status": {
+            "created_at": "Fri Mar 06 11:28:52 +0000 2020",
+            "id": 1235890085859667968,
+            "id_str": "1235890085859667968",
+            "text": "@Atridas87 😅",
+            "truncated": false,
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [
+                    {
+                        "screen_name": "Atridas87",
+                        "name": "Master Atridas of the 🌹🔥 🚜🐐",
+                        "id": 231167094,
+                        "id_str": "231167094",
+                        "indices": [
+                            0,
+                            10
+                        ]
+                    }
+                ],
+                "urls": []
+            },
+            "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+            "in_reply_to_status_id": 1235889583734349825,
+            "in_reply_to_status_id_str": "1235889583734349825",
+            "in_reply_to_user_id": 231167094,
+            "in_reply_to_user_id_str": "231167094",
+            "in_reply_to_screen_name": "Atridas87",
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 0,
+            "favorite_count": 0,
+            "favorited": false,
+            "retweeted": false,
+            "lang": "und"
+        },
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "E5E99B",
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_tile": true,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/1217130923013132290/2-RUVLM__normal.jpg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/1217130923013132290/2-RUVLM__normal.jpg",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/9074632/1426669895",
+        "profile_link_color": "009BFF",
+        "profile_sidebar_border_color": "FFFFFF",
+        "profile_sidebar_fill_color": "FFE091",
+        "profile_text_color": "000000",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "regular"
+    }
+]

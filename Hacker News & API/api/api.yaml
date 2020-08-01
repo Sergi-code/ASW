@@ -1,0 +1,1309 @@
+openapi: 3.0.1
+info:
+  version: "1.0.0-oas3"
+  title: Hacker News API
+  description: >-
+    This is the Open API documentation for the REST API of our beloved
+    application **ASW Hacker News** deployed at
+    <https://pacific-lowlands-55317.herokuapp.com/>. <br> 
+    All operations are executable. All operations requires a token.
+    To get this token get logged in "url" and copy the token to use it in all the operations.
+
+servers:
+  - url: 'https://pacific-lowlands-55317.herokuapp.com/'
+paths:
+  /api/user/{id}/submits:
+    get:
+      tags:
+        - Users
+      summary: Get all the submits of the user with this.{id}
+      operationId: GetSubmits
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Submit'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404'
+        '401':
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/submits:
+    get:
+      tags:
+        - submits
+      summary: Get all the submits
+      operationId: GetAllSubmits
+      parameters:
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+        - in: query
+          description: Type equals url or text// otherwise ordered by date of creation of the post 
+          name: type
+          schema:
+            type: string
+          required: false
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Submit'
+        '400':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'
+        '401':
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+                
+    post:
+      tags:
+      - submits
+      summary: Add a new submit at hacker news
+      parameters:
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      operationId: addSubmit
+      requestBody:
+        description: Provide the title & (the url or the text)
+        content:
+          application/json:
+            schema:
+              required:
+              - title
+              - url
+              - text
+              type: object
+              properties:
+                title:
+                  type: string
+                  minLength: 4
+                  example: 'My title'
+                url:
+                  type: string
+                  minLength: 0
+                  maxLength: 280
+                  example: 'www.google.com'
+                text:
+                  type: string
+                  minLength: 0
+                  maxLength: 280
+                  example: 'My question'
+        required: true
+      responses:
+        201:
+          description: Submit created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddSubmitResult'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'
+        409:
+          description: URL ya existente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error409'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/users:
+    get:
+      tags:
+        - Users
+      summary: Get all the users
+      operationId: GetAllUsers
+      parameters:
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  /api/user/{id}/votes:
+     get:
+      tags:
+        - Users
+      summary: Get all things that the user had upvote
+      operationId: GetAllVotes
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Submit'
+                  - $ref: '#/components/schemas/Comment'
+                  - $ref: '#/components/schemas/Replies'
+        '404':
+          description: Wrong ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404'
+        '401':
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+                  
+  /api/submit/{id}/voters:
+    get:
+      tags:
+        - submits
+      summary: Get Voters of the submit with this.{id}
+      operationId: GetUserVotesOfSubmit
+      parameters:
+        - name: id
+          in: path
+          description: ID of the submit
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'  
+        '404':
+          description: Submit not exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404'
+        '401':
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/comment/{id}/voters:
+    get:
+      tags:
+        - Comments
+      summary: Get Voters of the comment with this.{id}
+      operationId: GetUserVotesOfComment
+      parameters:
+        - name: id
+          in: path
+          description: ID of the comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/reply/{id}/voters:
+    get:
+      tags:
+        - Replies
+      summary: Get Voters of a the reply with this.{id}
+      operationId: GetUserVotesOfReplies
+      parameters:
+        - name: id
+          in: path
+          description: ID of the reply
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/user/{id}:
+    get:
+      tags:
+        - Users
+      summary: Get User with {id}
+      operationId: GetOneUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '404':
+          description: Wrong ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404'
+        '401':
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+    put:
+      tags:
+      - Users
+      summary: Update about
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      operationId: UpdateAbout
+      requestBody:
+        description: Provide the content of the about
+        content:
+          application/json:
+            schema:
+              required:
+              - about
+              type: object
+              properties:
+                about:
+                  type: string
+                  minLength: 0
+                  example: 'My ABOUT'
+        required: true
+      responses:
+        200:
+          description: About updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'
+        404:
+          description: Wrong ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+      
+  /api/submit/{id}:
+    get:
+      tags:
+        - submits
+      summary: Get the submit with this.{id}
+      operationId: GetSubmit
+      parameters:
+        - name: id
+          in: path
+          description: ID of the submit
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Submit'
+        '404':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404'
+        '401':
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/reply/{id}/vote: 
+    put:
+      tags:
+      - Replies
+      summary: Vote or unvote a reply with this.{id}
+      parameters:
+        - name: id
+          in: path
+          description: ID of the Reply
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      operationId: VoteReply
+      responses:
+        200:
+          description: Vote Succesfull
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Replies'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'  
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/comment/{id}/vote:
+    put:
+      tags:
+      - Comments
+      summary: Vote or unvote a comment with this.{id}
+      parameters:
+        - name: id
+          in: path
+          description: ID of the comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      operationId: VoteComment
+      responses:
+        200:
+          description: Vote Succesfull
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+
+  /api/submit/{id}/vote:
+    put:
+      tags:
+      - submits
+      summary: Vote or unvote a submit with this.{id}
+      parameters:
+        - name: id
+          in: path
+          description: ID of the submit
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      operationId: VoteSubmit
+      responses:
+        200:
+          description: Vote Succesfull
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Submit'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'
+        404:
+          description: Wrong ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error404'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/submit/{id}/comments:
+    get:
+      tags:
+        - Comments
+      summary: Get all the comments of the submit with  this.{id}
+      operationId: GetAllCommentsSubmit
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+    post:
+      tags:
+      - Comments
+      summary: Add a new Comment of at submit with this.{id} at hacker news
+      parameters:
+        - name: id
+          in: path
+          description: ID of the submit
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      operationId: addComment
+      requestBody:
+        description: Provide the title & (the url or the text)
+        content:
+          application/json:
+            schema:
+              required:
+              - text
+              type: object
+              properties:
+                text:
+                  type: string
+                  minLength: 4
+                  maxLength: 280
+                  example: 'My comment content'
+        required: true
+      responses:
+        201:
+          description: Submit created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddSubmitResult'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'     
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/comments:
+    get:
+      tags:
+        - Comments
+      summary: Get all the comments
+      operationId: GetAllComments
+      parameters:
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/comment/{id}:
+    get:
+      tags:
+        - Comments
+      summary: Get comment with this.{id}
+      operationId: GetComment
+      parameters:
+        - name: id
+          in: path
+          description: ID of the comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Submit'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+                  
+  /api/comment/{id}/replies:
+    get:
+      tags:
+        - Replies
+      summary: Get replies of the comment with this.{id}
+      operationId: GetRepliesOfaComment
+      parameters:
+        - name: id
+          in: path
+          description: ID of the comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Replies'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+    post:
+      tags:
+      - Replies
+      summary: Add a new Reply to a comment with the this.{id} at hacker news
+      parameters:
+        - name: id
+          in: path
+          description: ID of the comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      operationId: addReply
+      requestBody:
+        description: Provide the text of the reply
+        content:
+          application/json:
+            schema:
+              required:
+              - text
+              type: object
+              properties:
+                text:
+                  type: string
+                  minLength: 4
+                  maxLength: 280
+                  example: 'My Reply content'
+        required: true
+      responses:
+        201:
+          description: Reply created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Replies'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/reply/{id}:
+    get:
+      tags:
+        - Replies
+      summary: Get Reply with this.{id}
+      operationId: GetReplyByID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Replies'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/reply/{id}/replies:
+    get:
+      tags:
+        - Replies
+      summary: Get Replies of the reply with this.{id}
+      operationId: GetRepliesOfaReply
+      parameters:
+        - name: id
+          in: path
+          description: ID of the reply
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Replies'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+    post:
+      tags:
+      - Replies
+      summary: Add a new Reply to a reply with the this.{id} at hacker news
+      parameters:
+        - name: id
+          in: path
+          description: ID of the reply
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      operationId: addReplytoReply
+      requestBody:
+        description: Provide the text of the reply
+        content:
+          application/json:
+            schema:
+              required:
+              - text
+              type: object
+              properties:
+                text:
+                  type: string
+                  minLength: 4
+                  maxLength: 280
+                  example: 'My Reply content'
+        required: true
+      responses:
+        201:
+          description: Reply created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Replies'
+        400:
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error400'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/user/{id}/comments:
+    get:
+      tags:
+        - Users
+      summary: Get all the comments of the user with this.{id}
+      operationId: GetComments
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+  /api/user/{id}/replies:
+    get:
+      tags:
+        - Users
+      summary: Get all the replies of the user with this.{id}
+      operationId: GetReplies
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Replies'
+        401:
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+              examples:
+                errorExample:
+                  $ref: '#/components/examples/error401'
+components:
+  schemas:
+    Submit:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 2
+        title:
+          type: string
+          minLength: 2
+          example: My name
+        url:
+          type: string
+          minLength: 4
+          example: www.google.com
+        text:
+          type: string
+          minLength: 4
+          example: I'm gonna talk about...
+        votes:
+          type: integer
+          format: int64
+          example: 2
+        user:
+          type: string
+          minLength: 2
+          example: Joan123
+        userID:
+          type: integer
+          format: int64
+          example: 2
+        created_at:
+          type: string
+          format: date-time
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 2
+        email:
+          type: string
+          minLength: 0
+          example: email of the user
+        name:
+          type: string
+          minLength: 0
+          example: name of the user
+        about:
+          type: string
+          minLength: 0
+          example: about of the user
+        created_at:
+          type: string
+          format: date-time
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 2
+        content:
+          type: string
+          minLength: 0
+          example: text of the comment
+        submitID:
+          type: integer
+          format: int64
+          example: 1
+        votes:
+          type: integer
+          format: int64
+          example: 2
+        user:
+          type: integer
+          format: int64
+          example: 1
+        userID:
+          type: integer
+          format: int64
+          example: 2
+        created_at:
+          type: string
+          format: date-time
+    Replies:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 2
+        content:
+          type: string
+          minLength: 0
+          example: text of the reply
+        comment/replyID:
+          type: integer
+          format: int64
+          example: 1
+        votes:
+          type: integer
+          format: int64
+          example: 2
+        user:
+          type: string
+          minLength: 4
+          example: My name
+        userID:
+          type: integer
+          format: int64
+          example: 2
+        created_at:
+          type: string
+          format: date-time
+    AddSubmitResult:
+      type: object
+      properties:
+        new_submit:
+          $ref: '#/components/schemas/Submit'
+    ErrorResult:
+      type: object
+      properties:
+        status:
+          type: integer
+          enum:
+            - 400
+            - 401
+            - 403
+            - 404
+            - 409
+        error:
+          type: string
+          enum:
+            - Bad Request
+            - Unauthorized
+            - Forbidden
+            - Not Found
+            - Conflict
+        message:
+          type: string
+  examples:
+    error400:
+      value:
+        status: 400
+        error: Bad Request
+        message: Error(specified by the server)
+    error401:
+      value:
+        status: 401
+        error: Unauthorized
+        message: You provided no api key (X-API-KEY Header)
+    error403:
+      value:
+        status: 403
+        error: Forbidden
+        message: Your api key (X-API-KEY Header) is not valid
+    error404:
+      value:
+        status: 404
+        error: Not Found
+        message: No match with that ID
+    error409:
+      value:
+        status: 409
+        error: Url already existis  
+        message: The submit with this url already exists
+  securitySchemes:
+    token:
+      type: oauth2
+      description: This API uses OAuth 2
+      flows:
+        implicit:   # <---- OAuth flow(authorizationCode, implicit, password or clientCredentials)
+          authorizationUrl: https://pacific-lowlands-55317.herokuapp.com/auth/google_oauth2/
+          scopes: {}

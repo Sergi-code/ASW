@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<body class="wotbody">
+  <h1 class="wottitle">Wall of Tweets - RoR Edition</h1>
+  <br>
+  <div class="walltweet">
+    <form action="/tweets" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="Jw8W2mlsUfjmpdPaaAMuqg20F8DzxfDoRIaT6WY9FtqnOGpxYJUBg1wbNaiptOke3F74L1Qf4zna/rMcNm8dPw==">
+      <table cellpadding="2" border="0">
+        <tbody>
+          <tr>
+            <td>Your name:</td> <td><input size="70" type="text" name="tweet[author]" id="tweet_author"></td> <td></td>
+          </tr>
+          <tr> 
+            <td>Your tweet:</td> <td><textarea rows="2" cols="70" name="tweet[content]" id="tweet_content"></textarea></td> <td><input type="submit" name="commit" value="Tweet!" data-disable-with="Tweet!"></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+  <br>
+  <% @tweets.each do |tweet| %>
+    <h3>...... <%= tweet.created_at.month %> <%= tweet.created_at.day %> ,<%= tweet.created_at.year %> </h3>
+    <div class="wotitem">
+      <div class="likes">     
+      <span class="numlikes"> <%= tweet.likes %> </span>
+        <br>
+        <span class="smallfont">people like this<span>
+        <br>
+        <h3><a rel="nofollow" data-method="put" href="tweets/<%= tweet.id %>/like">like</a></h3>
+        </span></span>
+      </div>
+      <div class="item">
+        <h4><em><%= tweet.author %></em> @ <%= tweet.created_at.hour %> : <%= tweet.created_at.min %></h4>
+        <p><%= tweet.content %></p>
+        <p style="text-align: right;"><a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="tweets/<%= tweet.id %>">Destroy</a></p>
+      </div>
+    </div>
+  <% end %>
+</body >

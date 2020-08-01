@@ -1,0 +1,2 @@
+module CommentsApiHelper
+end

@@ -1,0 +1,31 @@
+{
+    "relationship": {
+        "source": {
+            "id": 822215679726100480,
+            "id_str": "822215679726100480",
+            "screen_name": "POTUS",
+            "following": true,
+            "followed_by": true,
+            "live_following": false,
+            "following_received": null,
+            "following_requested": null,
+            "notifications_enabled": null,
+            "can_dm": true,
+            "blocking": null,
+            "blocked_by": null,
+            "muting": null,
+            "want_retweets": null,
+            "all_replies": null,
+            "marked_spam": null
+        },
+        "target": {
+            "id": 818876014390603776,
+            "id_str": "818876014390603776",
+            "screen_name": "FLOTUS",
+            "following": true,
+            "followed_by": true,
+            "following_received": null,
+            "following_requested": null
+        }
+    }
+}

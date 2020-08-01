@@ -1,0 +1,175 @@
+<style>
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+td {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    color: #828282;
+}
+center {
+    text-align: -webkit-center;
+}
+table {
+    border-collapse: separate;
+    white-space: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-size: medium;
+    font-style: normal;
+    color: -internal-quirk-inherit;
+    text-align: start;
+    border-spacing: 2px;
+    font-variant: normal;
+}
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    color: #828282;
+}
+.title {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    color: #828282;
+}
+.votearrow {
+    width: 10px;
+    height: 10px;
+    border: 0px;
+    margin: 3px 2px 6px;
+    background: url(grayarrow.gif) no-repeat;
+}
+a:visited {
+    color: #828282;
+    text-decoration: none;
+}
+.hnmore a:link, a:visited {
+    color: #828282;
+}
+a:link {
+    color: #000000;
+    text-decoration: none;
+}
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.subtext {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 7pt;
+    color: #828282;
+}
+.subtext a:link, .subtext a:visited {
+    color: #828282;
+}
+.comhead {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 8pt;
+    color: #828282;
+}
+.comment {
+    font-family: Verdana, Geneva, sans-serif; 
+    font-size: 9pt; 
+}
+.comhead a:link, .subtext a:visited {
+    color: #828282;
+}
+.default {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    color: #828282;
+}
+</style>
+<table border="0" cellpadding="0" align="center" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+
+<%y=1%>
+        <% @vote.reverse_each do |comment| %>
+            <table class="coment-tree" border="0">
+                <tbody>
+                    <tr class = "athing comtr">
+                        <td >
+                            <table border= "0">
+                                <tbody>
+                                    <tr>
+                                        <td class="ind">
+                                        </td>
+                                        <td valign="top" class="votelinks">
+                                            <center><a id="up_22892865" href=""><div class="votearrow" title="upvote" bis_skin_checked="1"></div></a><center><a id="up_22892865" onclick="return vote(event, this, &quot;up&quot;)" href="vote?id=22892865&amp;how=up&amp;auth=ed766368e4d22e599069f9d60c9e3d139e4760c0&amp;goto=item%3Fid%3D22887346#22892865"><div class="votearrow" title="upvote" bis_skin_checked="1"></div></a></center></center>
+                                        </td>
+                                        <td class = "default">
+                                            
+                                            <div style="margin-top:2px; margin-bottom:-10px;">
+                                                <span class="comhead">
+                                                    <a href="linkto" style="text-decoration:none"><%=comment.nomautor%></a> 
+                                                <span class="age">
+                                                    <a><%=comment.created_at%></a>
+                                                </span>
+                                                </div>
+                                                    <br>
+                                                <div class="comment">
+                                                    <span class="commtext c00"><%=comment.text%>
+                                                        </p>
+                                                        <div class="reply">        
+                                                        <p>
+                                                        <font size="1">
+                                                <u>
+                                                    <a href="../../comment/ <%= comment.id %>">reply</a>
+                                                    <%= comment.votes %>
+                                                    <%= link_to 'Vote', vote_comment_path(comment), method: :put %>
+                                                    <%= link_to 'Unvote', unvote_comment_path(comment), method: :put %>
+                                                </u>
+                                                </font>
+                                            </p>
+                                            </div>
+                                            </span>
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                   
+                    <br>
+                    <br>
+                    </tr>
+            <% @submit.reverse_each do |submit| %>
+    <% if submit.id == comment.submit_id %>
+    <table border="0" align = "center" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+      <tbody>    
+          <tr class="athing" id="22703000">
+              <td class="title">
+                  <% if submit.url != ""  %>
+                                                             <a href="/submits/<%=submit.id%>" style = "text-decoration: none;color:black" class="storylink">
+                              <%= submit.title %>
+                  </a>
+                      <span class="sitebit comhead"> (
+                          <a href="https://<%=submit.url%>" style = "text-decoration: none;color:black">
+                          <span class="sitestr"><%= submit.url %></span>
+                              </a>
+                          )
+                      </span>
+                  <% else %>
+                  <a href="/submits/<%=submit.id%>" style = "text-decoration: none;color:black" class="storylink">
+                              <%= submit.title %>
+                  </a>
+                  <% end %>
+                  
+              </td>
+          </tr>
+          <% end %>
+      </tbody>
+  </table>
+  <% end %>
+                          </tbody>
+            </table>
+          
+    <%end%>
+  </table>
